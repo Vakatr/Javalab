@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       
+        <h:form>
+            <h:link value="Add new Owner" outcome="addOwner"></h:link>
+            <br></br>
+            <h:dataTable var ="o" value="#{ownerController.findAlll()}" border="1" cellpadding="2" cellspacing="2">
+            
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{o.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Driving_license_owner</f:facet>
+                    <h:outputText value="#{o.driving_license_owner}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Surname</f:facet>
+                    <h:outputText value="#{o.surname}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{o.name}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Patronymic</f:facet>
+                    <h:outputText value="#{o.patronymic}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Address</f:facet>
+                    <h:outputText value="#{o.address}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Phone</f:facet>
+                    <h:outputText value="#{o.phone}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action="#{ownerController.deleteOwner(o)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{ownerController.editOwner(o)}"></h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
+            
+            <br></br>
+            <h:link value="Add new Car" outcome="addCar"></h:link>
+            <br></br>
+            <h:dataTable var ="c" value="#{carController.findAll()}" border="1" cellpadding="2" cellspacing="2">
+            
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{c.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Owner</f:facet>
+                    <h:outputText value="#{c.owner}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">State_number</f:facet>
+                    <h:outputText value="#{c.state_number}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Brand</f:facet>
+                    <h:outputText value="#{c.brand}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Release_year</f:facet>
+                    <h:outputText value="#{c.release_year}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Power</f:facet>
+                    <h:outputText value="#{c.power}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Color</f:facet>
+                    <h:outputText value="#{c.color}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action="#{carController.deleteCar(c)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{carController.editCar(c)}"></h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
+             <br></br>
+            <h:link value="Add new Box" outcome="addBox"></h:link>
+            <br></br>
+                    <h:dataTable var ="b" value="#{boxController.findAll()}" border="1" cellpadding="2" cellspacing="2">
+                        <h:column>
+                             <f:facet name="header">Id</f:facet>
+                            <h:outputText value="#{b.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">NomerBox</f:facet>
+                            <h:outputText value="#{b.nomerbox}"/>
+                        </h:column>
+                        <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandLink value="Delete" action="#{boxController.deleteBox(b)}" onclick="return confirm('Are you sure?')"></h:commandLink> | 
+                    <h:commandLink value="Edit" action="#{boxController.editBox(b)}"></h:commandLink>
+                </h:column>
+                    </h:dataTable>  
+            
+            <h3>Эксперименты</h3>
+            <h>Дать контейнеру закончить транзакцию подтверждением и убедиться, что обновления зафиксированы</h>
+            
+             <h:panelGrid columns="2">
+                    <h:outputLabel value="Права_БД1:" for="driving_license_owner" />
+                    <h:inputText value="#{ownerController.owner.driving_license_owner}" title="Driving_license_owner" />
+                    <h:outputLabel value="Фамилия_БД1:" for="surname" />
+                    <h:inputText value="#{ownerController.owner.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД1:" for="name" />
+                    <h:inputText value="#{ownerController.owner.name}" title="Name" />
+                    <h:outputLabel value="Отчество_БД1:" for="patronymic" />
+                    <h:inputText value="#{ownerController.owner.patronymic}" title="Patronymic" />
+                    <h:outputLabel value="Адрес_БД1:" for="address" />
+                    <h:inputText value="#{ownerController.owner.address}" title="Address" />
+                    <h:outputLabel value="Телефон_БД1:" for="phone" />
+                    <h:inputText value="#{ownerController.owner.phone}" title="Phone" />
+                    <h:outputLabel value="Фамилия_БД2:" for="surname" />
+                    <h:inputText value="#{ownerController.c.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД2:" for="name" />
+                    <h:inputText value="#{ownerController.c.name}" title="Name" />
+                    <h:outputLabel value="Телефон_БД2:" for="phone" />
+                    <h:inputText value="#{ownerController.c.phone}" title="Phone" />
+                    <h:commandButton value="Okey" action="#{ownerController.firstExperiment()}"></h:commandButton>
+                </h:panelGrid>
+            
+            <h>Закончить транзакцию откатом в сессионном фасаде для первой базы данных и убедиться, что обновления отменены</h>            
+             <h:panelGrid columns="2">
+                    <h:outputLabel value="Права_БД1:" for="driving_license_owner" />
+                    <h:inputText value="#{ownerController.owner.driving_license_owner}" title="Driving_license_owner" />
+                    <h:outputLabel value="Фамилия_БД1:" for="surname" />
+                    <h:inputText value="#{ownerController.owner.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД1:" for="name" />
+                    <h:inputText value="#{ownerController.owner.name}" title="Name" />
+                    <h:outputLabel value="Отчество_БД1:" for="patronymic" />
+                    <h:inputText value="#{ownerController.owner.patronymic}" title="Patronymic" />
+                    <h:outputLabel value="Адрес_БД1:" for="address" />
+                    <h:inputText value="#{ownerController.owner.address}" title="Address" />
+                    <h:outputLabel value="Телефон_БД1:" for="phone" />
+                    <h:inputText value="#{ownerController.owner.phone}" title="Phone" />
+                    <h:outputLabel value="Фамилия_БД2:" for="surname" />
+                    <h:inputText value="#{ownerController.c.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД2:" for="name" />
+                    <h:inputText value="#{ownerController.c.name}" title="Name" />
+                    <h:outputLabel value="Телефон_БД2:" for="phone" />
+                    <h:inputText value="#{ownerController.c.phone}" title="Phone" />
+                    <h:commandButton value="Okey" action="#{ownerController.secondExperiment()}"></h:commandButton>
+                </h:panelGrid>
+            
+            <h>закончить транзакцию откатом, выбросив системное исключение EJBException в сессионном фасаде для второй базы данных после
+                обновления источника данных, и убедиться, что обновления отменены</h>            
+             <h:panelGrid columns="2">
+                    <h:outputLabel value="Права_БД1:" for="driving_license_owner" />
+                    <h:inputText value="#{ownerController.owner.driving_license_owner}" title="Driving_license_owner" />
+                    <h:outputLabel value="Фамилия_БД1:" for="surname" />
+                    <h:inputText value="#{ownerController.owner.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД1:" for="name" />
+                    <h:inputText value="#{ownerController.owner.name}" title="Name" />
+                    <h:outputLabel value="Отчество_БД1:" for="patronymic" />
+                    <h:inputText value="#{ownerController.owner.patronymic}" title="Patronymic" />
+                    <h:outputLabel value="Адрес_БД1:" for="address" />
+                    <h:inputText value="#{ownerController.owner.address}" title="Address" />
+                    <h:outputLabel value="Телефон_БД1:" for="phone" />
+                    <h:inputText value="#{ownerController.owner.phone}" title="Phone" />
+                    <h:outputLabel value="Фамилия_БД2:" for="surname" />
+                    <h:inputText value="#{ownerController.c.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД2:" for="name" />
+                    <h:inputText value="#{ownerController.c.name}" title="Name" />
+                    <h:outputLabel value="Телефон_БД2:" for="phone" />
+                    <h:inputText value="#{ownerController.c.phone}" title="Phone" />
+                    <h:commandButton value="Okey" action="#{ownerController.thirdExperiment()}"></h:commandButton>
+                </h:panelGrid>
+            
+            <h>Обновление второй базы данных должно выполняться вне контекста транзакции</h>            
+             <h:panelGrid columns="2">
+                    <h:outputLabel value="Права_БД1:" for="driving_license_owner" />
+                    <h:inputText value="#{ownerController.owner.driving_license_owner}" title="Driving_license_owner" />
+                    <h:outputLabel value="Фамилия_БД1:" for="surname" />
+                    <h:inputText value="#{ownerController.owner.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД1:" for="name" />
+                    <h:inputText value="#{ownerController.owner.name}" title="Name" />
+                    <h:outputLabel value="Отчество_БД1:" for="patronymic" />
+                    <h:inputText value="#{ownerController.owner.patronymic}" title="Patronymic" />
+                    <h:outputLabel value="Адрес_БД1:" for="address" />
+                    <h:inputText value="#{ownerController.owner.address}" title="Address" />
+                    <h:outputLabel value="Телефон_БД1:" for="phone" />
+                    <h:inputText value="#{ownerController.owner.phone}" title="Phone" />
+                    <h:outputLabel value="Фамилия_БД2:" for="surname" />
+                    <h:inputText value="#{ownerController.c.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД2:" for="name" />
+                    <h:inputText value="#{ownerController.c.name}" title="Name" />
+                    <h:outputLabel value="Телефон_БД2:" for="phone" />
+                    <h:inputText value="#{ownerController.c.phone}" title="Phone" />
+                    <h:commandButton value="Okey" action="#{ownerController.fourthExperiment()}"></h:commandButton>
+                </h:panelGrid>
+            
+            <h>Обновление первой базы данных должно выполняться в контексте новой транзакции</h>            
+             <h:panelGrid columns="2">
+                    <h:outputLabel value="Права_БД1:" for="driving_license_owner" />
+                    <h:inputText value="#{ownerController.owner.driving_license_owner}" title="Driving_license_owner" />
+                    <h:outputLabel value="Фамилия_БД1:" for="surname" />
+                    <h:inputText value="#{ownerController.owner.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД1:" for="name" />
+                    <h:inputText value="#{ownerController.owner.name}" title="Name" />
+                    <h:outputLabel value="Отчество_БД1:" for="patronymic" />
+                    <h:inputText value="#{ownerController.owner.patronymic}" title="Patronymic" />
+                    <h:outputLabel value="Адрес_БД1:" for="address" />
+                    <h:inputText value="#{ownerController.owner.address}" title="Address" />
+                    <h:outputLabel value="Телефон_БД1:" for="phone" />
+                    <h:inputText value="#{ownerController.owner.phone}" title="Phone" />
+                    <h:outputLabel value="Фамилия_БД2:" for="surname" />
+                    <h:inputText value="#{ownerController.c.surname}" title="Surname" />
+                    <h:outputLabel value="Имя_БД2:" for="name" />
+                    <h:inputText value="#{ownerController.c.name}" title="Name" />
+                    <h:outputLabel value="Телефон_БД2:" for="phone" />
+                    <h:inputText value="#{ownerController.c.phone}" title="Phone" />
+                    <h:commandButton value="Okey" action="#{ownerController.fifthExperiment()}"></h:commandButton>
+                </h:panelGrid>
+        </h:form>   
+        
+    </h:body>
+</html>
+
